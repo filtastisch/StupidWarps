@@ -14,7 +14,9 @@ jobs:
 
       - name: Get commit message
         id: get_message
-        run: echo "message=$(git log -1 --pretty=%B)" >> $GITHUB_OUTPUT
+        run: |
+          COMMIT_MESSAGE=$(git log -1 --pretty=%B)
+          printf "message=%s\n" "$COMMIT_MESSAGE" >> $GITHUB_OUTPUT
 
       - name: Get last line of commit message
         id: get_last_line
