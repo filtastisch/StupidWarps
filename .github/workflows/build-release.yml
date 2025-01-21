@@ -19,7 +19,7 @@ jobs:
       - name: Get version from pom.xml
         id: get_version
         run: |
-          VERSION=$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec -f pom.xml)
+          VERSION=$(grep "<version>" pom.xml | sed -n 's/.*<version>\(.*\)<\/version>.*/\1/p')
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Build with Maven
