@@ -1,0 +1,4 @@
+name: LunarieBuildserverAdditions
+version: '1.0-SNAPSHOT'
+main: eu.filtastisch.lunarieBuildserverAdditions.LunarieBuildserverAdditions
+api-version: '1.20'
