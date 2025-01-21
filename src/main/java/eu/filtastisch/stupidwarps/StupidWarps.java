@@ -8,6 +8,7 @@ import eu.filtastisch.stupidwarps.commands.WarpUtilCommands;
 import eu.filtastisch.stupidwarps.storage.DefaultConfig;
 import eu.filtastisch.stupidwarps.storage.WarpConfig;
 import lombok.Getter;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 @Getter
@@ -50,11 +51,13 @@ public final class StupidWarps extends JavaPlugin {
     }
 
     private void loadCommandApi(){
-        CommandAPI.onLoad(new CommandAPIBukkitConfig(this)
-                .silentLogs(true)
-                .setNamespace("stupidwarps")
-                .shouldHookPaperReload(true)
-        );
+        if (Bukkit.getPluginManager().getPlugin("CommandAPI") != null) {
+            CommandAPI.onLoad(new CommandAPIBukkitConfig(this)
+                    .silentLogs(true)
+                    .setNamespace("stupidwarps")
+                    .shouldHookPaperReload(true)
+            );
+        }
     }
 
 }
