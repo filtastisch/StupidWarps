@@ -1,9 +1,8 @@
-package eu.filtastisch.lunarieBuildserverAdditions.utils.manager;
+package eu.filtastisch.stupidwarps.utils.manager;
 
-import eu.filtastisch.lunarieBuildserverAdditions.utils.ConfirmHandler;
+import eu.filtastisch.stupidwarps.utils.ConfirmHandler;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 

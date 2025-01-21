@@ -1,6 +1,6 @@
-package eu.filtastisch.lunarieBuildserverAdditions.utils.manager;
+package eu.filtastisch.stupidwarps.utils.manager;
 
-import eu.filtastisch.lunarieBuildserverAdditions.utils.types.Warp;
+import eu.filtastisch.stupidwarps.utils.types.Warp;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -22,22 +22,22 @@ public class WarpManager {
     }
 
     public static Warp getWarp(String name) {
-        return WARPS.stream().filter(warp -> warp.name().equals(name)).findFirst().orElse(null);
+        return WARPS.stream().filter(warp -> warp.getName().equals(name)).findFirst().orElse(null);
     }
 
     public static boolean warpExists(String name) {
-        return WARPS.stream().anyMatch(warp -> warp.name().equals(name));
+        return WARPS.stream().anyMatch(warp -> warp.getName().equals(name));
     }
 
     public static void updateWarp(Warp warp) {
-        WARPS.removeIf(w -> w.name().equals(warp.name()));
+        WARPS.removeIf(w -> w.getName().equals(warp.getName()));
         WARPS.add(warp);
     }
 
     public static List<Warp> getWarps(boolean reverse) {
         if (reverse) {
-            return WARPS.stream().sorted(Comparator.comparingLong(Warp::creationTime).reversed()).collect(Collectors.toList());
+            return WARPS.stream().sorted(Comparator.comparingLong(Warp::getCreationTime).reversed()).collect(Collectors.toList());
         }
-        return WARPS.stream().sorted(Comparator.comparingLong(Warp::creationTime)).collect(Collectors.toList());
+        return WARPS.stream().sorted(Comparator.comparingLong(Warp::getCreationTime)).collect(Collectors.toList());
     }
 }

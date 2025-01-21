@@ -1,18 +1,20 @@
-package eu.filtastisch.lunarieBuildserverAdditions;
+package eu.filtastisch.stupidwarps;
 
 import com.samjakob.spigui.SpiGUI;
-import eu.filtastisch.lunarieBuildserverAdditions.commands.WarpCommand;
-import eu.filtastisch.lunarieBuildserverAdditions.commands.WarpUtilCommands;
-import eu.filtastisch.lunarieBuildserverAdditions.storage.DefaultConfig;
-import eu.filtastisch.lunarieBuildserverAdditions.storage.WarpConfig;
+import dev.jorel.commandapi.CommandAPI;
+import dev.jorel.commandapi.CommandAPIBukkitConfig;
+import eu.filtastisch.stupidwarps.commands.WarpCommand;
+import eu.filtastisch.stupidwarps.commands.WarpUtilCommands;
+import eu.filtastisch.stupidwarps.storage.DefaultConfig;
+import eu.filtastisch.stupidwarps.storage.WarpConfig;
 import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
 
 @Getter
-public final class LunarieBuildserverAdditions extends JavaPlugin {
+public final class StupidWarps extends JavaPlugin {
 
     @Getter
-    private static LunarieBuildserverAdditions instance;
+    private static StupidWarps instance;
     private DefaultConfig defaultConfig;
     private WarpConfig warpConfig;
     private SpiGUI spiGUI;
@@ -20,6 +22,9 @@ public final class LunarieBuildserverAdditions extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
+
+        this.loadCommandApi();
+
         this.registerApis();
         this.loadConfig();
         this.registerCommands();
@@ -42,6 +47,14 @@ public final class LunarieBuildserverAdditions extends JavaPlugin {
     private void registerCommands() {
         new WarpCommand();
         new WarpUtilCommands();
+    }
+
+    private void loadCommandApi(){
+        CommandAPI.onLoad(new CommandAPIBukkitConfig(this)
+                .silentLogs(true)
+                .setNamespace("stupidwarps")
+                .shouldHookPaperReload(true)
+        );
     }
 
 }

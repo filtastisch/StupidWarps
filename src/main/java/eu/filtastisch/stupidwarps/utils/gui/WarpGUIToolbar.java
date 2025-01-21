@@ -1,16 +1,14 @@
-package eu.filtastisch.lunarieBuildserverAdditions.utils.gui;
+package eu.filtastisch.stupidwarps.utils.gui;
 
 import com.samjakob.spigui.buttons.SGButton;
 import com.samjakob.spigui.item.ItemBuilder;
 import com.samjakob.spigui.menu.SGMenu;
 import com.samjakob.spigui.toolbar.SGToolbarBuilder;
 import com.samjakob.spigui.toolbar.SGToolbarButtonType;
-import eu.filtastisch.lunarieBuildserverAdditions.utils.manager.WarpManager;
+import eu.filtastisch.stupidwarps.utils.manager.WarpManager;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
-
-import java.util.UUID;
 
 public class WarpGUIToolbar implements SGToolbarBuilder {
 

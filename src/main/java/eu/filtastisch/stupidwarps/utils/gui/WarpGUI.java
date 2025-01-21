@@ -1,16 +1,15 @@
-package eu.filtastisch.lunarieBuildserverAdditions.utils.gui;
+package eu.filtastisch.stupidwarps.utils.gui;
 
 import com.samjakob.spigui.buttons.SGButton;
 import com.samjakob.spigui.item.ItemBuilder;
 import com.samjakob.spigui.menu.SGMenu;
-import eu.filtastisch.lunarieBuildserverAdditions.LunarieBuildserverAdditions;
-import eu.filtastisch.lunarieBuildserverAdditions.utils.manager.WarpManager;
-import eu.filtastisch.lunarieBuildserverAdditions.utils.types.Warp;
+import eu.filtastisch.stupidwarps.StupidWarps;
+import eu.filtastisch.stupidwarps.utils.manager.WarpManager;
+import eu.filtastisch.stupidwarps.utils.types.Warp;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import javax.swing.text.DateFormatter;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -19,10 +18,10 @@ import java.util.UUID;
 
 public class WarpGUI {
 
-    private final static LunarieBuildserverAdditions plugin = LunarieBuildserverAdditions.getInstance();
+    private final static StupidWarps plugin = StupidWarps.getInstance();
 
     public static void openWarpGUI(Player player) {
-        if (!player.hasPermission("lunarie.build.warps")) {
+        if (!player.hasPermission("stupidwarps.warps")) {
             return;
         }
         SGMenu warpGui = plugin.getSpiGUI().create("§aWarps", 5);
@@ -31,10 +30,10 @@ public class WarpGUI {
 
         WarpManager.getWarps(WarpManager.reversedOrder.contains(player.getUniqueId())).forEach(warp -> {
 
-            ItemStack icon = new ItemBuilder(warp.icon()).name("§a" + warp.name()).lore(getLore(warp)).build();
+            ItemStack icon = new ItemBuilder(warp.getIcon()).name("§a" + warp.getDisplayName().replaceAll("&", "§")).lore(getLore(warp)).build();
 
             SGButton button = new SGButton(icon).withListener(e -> {
-                player.teleportAsync(warp.location());
+                player.teleportAsync(warp.getLocation());
                 player.sendMessage(plugin.getDefaultConfig().getMsgWarpTeleported(warp));
             });
 
@@ -44,14 +43,14 @@ public class WarpGUI {
     }
 
     public static String[] getLore(Warp warp) {
-        int x = warp.location().getBlockX();
-        int y = warp.location().getBlockY();
-        int z = warp.location().getBlockZ();
-        String world = warp.location().getWorld().getName();
-        long time = warp.creationTime();
-        UUID creator = warp.creator();
+        int x = warp.getLocation().getBlockX();
+        int y = warp.getLocation().getBlockY();
+        int z = warp.getLocation().getBlockZ();
+        String world = warp.getLocation().getWorld().getName();
+        long time = warp.getCreationTime();
+        UUID creator = warp.getCreator();
         DateTimeFormatter formatter = DateTimeFormatter
-                .ofPattern("'§a'dd'§7'.'§a'MM'§7'.'§a'yyyy '§a'HH'§7':'§a'mm '§dUhr'")
+                .ofPattern(StupidWarps.getInstance().getDefaultConfig().getTimeFormat())
                 .withLocale(Locale.GERMAN)
                 .withZone(ZoneId.systemDefault());
 
