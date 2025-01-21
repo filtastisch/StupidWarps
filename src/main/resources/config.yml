@@ -34,7 +34,7 @@ messages:
   create-warp: "<green>You created the warp</green> <yellow>%warp_name%</yellow>"
 
   # Message sent after teleporting to a warp.
-  teleported-warp: "<green>You have been teleported to</green> <yellow>%warp_name%</yellow>"
+  teleported-warp: "<green>You have been teleported to</green> <yellow>%warp_display_name%</yellow>"
 
   # Message sent when trying to create a warp that already exists.
   already-exists-warp: "<red>The warp</red> <yellow>%warp_name%</yellow> <red>already exists!</red>"
@@ -47,7 +47,7 @@ messages:
   no-confirmation-warp: "<red>There is no delete transaction active!</red>"
 
   # Message sent after successfully changing a warp's display name.
-  edit-name-warp: "<green>The name of the warp is now: </green> <yellow>%warp_display_name%</yellow>"
+  edit-name-warp: "<green>The name of the warp is now: </green><yellow>%warp_display_name%</yellow>"
 
   # Message sent after successfully changing a warp's icon.
   edit-icon-warp: "<green>The new icon of <yellow>%warp_name%</yellow> is now: </green> <yellow>%warp_icon%</yellow>"

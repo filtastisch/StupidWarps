@@ -133,7 +133,7 @@ public class DefaultConfig {
                                 .clickEvent(ClickEvent.runCommand("/warp " + warp.getName()))
                 ))
                 .replaceText(msg -> msg.match("%warp_display_name%").replacement(
-                        LegacyComponentSerializer.legacyAmpersand().deserialize(warp.getName())
+                        LegacyComponentSerializer.legacyAmpersand().deserialize(warp.getDisplayName())
                                 .hoverEvent(getHoverMessage(warp))
                                 .clickEvent(ClickEvent.runCommand("/warp " + warp.getName()))
                 ))
