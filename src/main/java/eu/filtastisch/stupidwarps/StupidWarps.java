@@ -36,7 +36,7 @@ public final class StupidWarps extends JavaPlugin {
         // Plugin shutdown logic
     }
 
-    private void registerApis(){
+    private void registerApis() {
         this.spiGUI = new SpiGUI(this);
     }
 
@@ -50,14 +50,12 @@ public final class StupidWarps extends JavaPlugin {
         new WarpUtilCommands();
     }
 
-    private void loadCommandApi(){
-        if (Bukkit.getPluginManager().getPlugin("CommandAPI") != null) {
-            CommandAPI.onLoad(new CommandAPIBukkitConfig(this)
-                    .silentLogs(true)
-                    .setNamespace("stupidwarps")
-                    .shouldHookPaperReload(true)
-            );
-        }
+    private void loadCommandApi() {
+        CommandAPI.onLoad(new CommandAPIBukkitConfig(this)
+                .silentLogs(true)
+                .setNamespace("stupidwarps")
+                .shouldHookPaperReload(true)
+        );
     }
 
 }

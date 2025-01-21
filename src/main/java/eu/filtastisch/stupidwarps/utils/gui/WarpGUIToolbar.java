@@ -21,8 +21,8 @@ public class WarpGUIToolbar implements SGToolbarBuilder {
     @Override
     public SGButton buildToolbarButton(int slot, int page, SGToolbarButtonType type, SGMenu menu) {
 
-        ItemBuilder sortAsc = new ItemBuilder(Material.PAPER).name("§aSortierung").lore("§eAktuelle Sortierung: ", " §7- Aufsteigend");
-        ItemBuilder sortDesc = new ItemBuilder(Material.PAPER).name("§aSortierung").lore("§eAktuelle Sortierung: ", " §7- Absteigend");
+        ItemBuilder sortAsc = new ItemBuilder(Material.PAPER).name("§aOrder").lore("§eCurrent order: ", " §7- Ascending");
+        ItemBuilder sortDesc = new ItemBuilder(Material.PAPER).name("§aOrder").lore("§eCurrent order: ", " §7- Descending");
 
 
         SGButton sortButtonAsc = new SGButton(sortAsc.build()).withListener(event -> {
@@ -47,7 +47,7 @@ public class WarpGUIToolbar implements SGToolbarBuilder {
         switch (type) {
             case PREV_BUTTON:
                 if (menu.getCurrentPage() > 0) return new SGButton(new ItemBuilder(Material.ARROW)
-                        .name("&a&l← Vorherige Seite").build()
+                        .name("&a&l← Previous page").build()
                 ).withListener(event -> {
                     event.setResult(Event.Result.DENY);
                     menu.previousPage(event.getWhoClicked());
@@ -56,13 +56,13 @@ public class WarpGUIToolbar implements SGToolbarBuilder {
 
             case CURRENT_BUTTON:
                 return new SGButton(new ItemBuilder(Material.NAME_TAG)
-                        .name("&7&lSeite " + (menu.getCurrentPage() + 1) + " von " + menu.getMaxPage())
+                        .name("&7&lPage " + (menu.getCurrentPage() + 1) + " of " + menu.getMaxPage())
                         .build()
                 ).withListener(event -> event.setResult(Event.Result.DENY));
 
             case NEXT_BUTTON:
                 if (menu.getCurrentPage() < menu.getMaxPage() - 1) return new SGButton(new ItemBuilder(Material.ARROW)
-                        .name("&a&lNächste Seite →")
+                        .name("&a&lNext page →")
                         .build()
                 ).withListener(event -> {
                     event.setResult(Event.Result.DENY);

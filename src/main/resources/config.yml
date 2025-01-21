@@ -6,7 +6,7 @@
 # Note: Legacy color codes are ONLY supported in the 'time-format' option.
 
 # Prefix for all messages sent by the plugin.
-prefix: "<light_purple>Stupid</light_purple><aqua>Warp</aqua> "
+prefix: "<light_purple>Stupid</light_purple><aqua>Warp</aqua> <gray>|</gray> "
 
 # Date and time format displayed on hover.
 # Uses Java's DateTimeFormatter patterns.
